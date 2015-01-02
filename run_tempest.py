@@ -1,0 +1,42 @@
+import time
+import subprocess
+import os
+import sys
+import pexpect
+
+def execute(command):
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    # Poll process for new output until finished
+    while True:
+        nextline = process.stdout.readline()
+        if nextline == '' and process.poll() != None:
+            break
+        sys.stdout.write(nextline)
+        sys.stdout.flush()
+
+    output = process.communicate()[0]
+    exitCode = process.returncode
+
+    if (exitCode == 0):
+        return output
+    else:
+        raise ProcessException(command, exitCode, output)
+
+try:
+    machineip = str(sys.argv[1])
+except:
+   print "please pass the machine ip"
+   exit (0)
+
+command = 'ssh root@' + machineip + ' ' + 'zypper --non-interactive in git-core' 
+execute([command])
+time.sleep(5)
+command = 'ssh root@' + machineip + ' ' + 'git clone http://10.39.23.201:8080/tempest-infoblox'
+execute([command])
+time.sleep(5)
+command = 'ssh root@' + machineip + ' ' + 'chmod +x /root/tempest-infoblox/update_config_suse.sh'
+execute([command])
+time.sleep(5)
+command = 'ssh root@' + machineip + ' ' + '/root/tempest-infoblox/./update_config_suse.sh'
+execute([command])
+time.sleep(5)

@@ -1,0 +1,15 @@
+#!/usr/bin/expect -f
+
+# connect via scp
+spawn scp /opt/stack/vm-scripts/suse_key.pub "root@$::env(machine_ip):/root/.ssh/authorized_keys"
+#######################
+expect {
+-re ".*es.*o.*" {
+exp_send "yes\r"
+exp_continue
+}
+-re ".*sword.*" {
+exp_send "infoblox\r"
+}
+}
+interact
