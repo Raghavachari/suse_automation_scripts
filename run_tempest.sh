@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd /root/tempest/
-nosetests -v tempest.thirdparty.infoblox.scenarios
+nosetests -v tempest/thirdparty/infoblox/scenarios/*
 
