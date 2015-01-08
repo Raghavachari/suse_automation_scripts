@@ -4,7 +4,7 @@ DEPLOYMENT_SERVICES=ioa
 IP=$1
 ib_patch=$2
 wapi=https://192.168.124.159/wapi/v1.4.1
-members='[{"ipv4addr": "192.168.124.159", "name": "master.com"}, {"ipv4addr": "192.168.124.162", "name": "member2.com"}, {"ipv4addr": "192.168.124.163", "name": "member3.com"}]'
+members='[{"ipv4addr": "192.168.124.159", "name": "member.com"}, {"ipv4addr": "192.168.124.162", "name": "member2.com"}, {"ipv4addr": "192.168.124.163", "name": "member3.com"}]'
 if [ x$IP == x ]; then
 echo "IP address is not specified"
 fi

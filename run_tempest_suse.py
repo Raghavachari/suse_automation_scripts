@@ -34,7 +34,7 @@ execute([command])
 time.sleep(2)
 command = 'ssh root@' + machineip + ' /root/packages.sh '
 execute([command])
-command = 'ssh root@' + machineip + ' ' + 'git clone https://github.com/naggappan/tempest-infoblox.git'
+command = 'ssh root@' + machineip + ' ' + 'git clone https://github.com/Raghavachari/tempest-infoblox.git'
 execute([command])
 time.sleep(5)
 command = 'ssh root@' + machineip + ' ' + 'chmod +x /root/tempest-infoblox/update_config_suse.sh'

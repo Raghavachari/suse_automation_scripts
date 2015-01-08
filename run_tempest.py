@@ -31,7 +31,7 @@ except:
 command = 'ssh root@' + machineip + ' ' + 'zypper --non-interactive in git-core' 
 execute([command])
 time.sleep(5)
-command = 'ssh root@' + machineip + ' ' + 'git clone http://10.39.23.201:8080/tempest-infoblox'
+command = 'ssh root@' + machineip + ' ' + 'git clone https://github.com/Raghavachari/tempest-infoblox.git'
 execute([command])
 time.sleep(5)
 command = 'ssh root@' + machineip + ' ' + 'chmod +x /root/tempest-infoblox/update_config_suse.sh'
